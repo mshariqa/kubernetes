@@ -1,0 +1,21 @@
+# kubecetl get pods
+# kubectl run nginx --image=nginx --> Creates a pod using command line
+# kubectl create -f filename.yml --> Creates a pod from a file
+# kubectl describe pod nginx --> For detail about a pod
+# kubectl delete pod webapp --> Delete a pod
+# kubectl apply -f redis.yaml --> Apply the changes in the pod file
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:  # Array coz a pod can have multiple helper containers
+    - name: nginx-container
+      image: nginx  # Docker hub image name
+      ports:
+        - containerPort: 80

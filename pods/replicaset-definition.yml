@@ -1,0 +1,30 @@
+# kubectl create -f replicaset-definition.yml
+# kubectl get replicaset
+# kubectl describe replicaset <>
+# kubectl delete -f replicaset-definition.yml
+# kubectl edit replicaset myapp-rs
+# kubectl scale replicaset myapp-rs --replicas=5
+
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+     app: myapp
+     type: front-end
+spec:
+  replicas: 4  # Update here scale up
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+    metadata:
+      name: myapp
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
